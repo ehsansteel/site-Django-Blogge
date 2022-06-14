@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     "heme_app.apps.HemeAppConfig",
     "login_app.apps.LoginAppConfig",
     "post_app.apps.PostAppConfig",
+    "blog_app.apps"
 ]
 
 MIDDLEWARE = [
