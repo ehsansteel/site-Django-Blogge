@@ -23,7 +23,7 @@
                             <div class="meta-category">
                                 <span>{{ aurthor.category.first }}</span>
                             </div>
-                            <a href="{% url "blog:detail" aurthor.id %}"><h4>{{ aurthor.tite }}</h4></a>
+                            <a href="{{ aurthor.get_url }}"><h4>{{ aurthor.title }}</h4></a>
                             <ul class="post-info">
                                 <li><a href="#">{{ aurthor.author.username }}</a></li>
                                 <li><a href="#">{{ aurthor.tima }}</a></li>

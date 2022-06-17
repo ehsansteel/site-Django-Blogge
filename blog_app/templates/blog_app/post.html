@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    {{ aurthor.tite }}
+    {{ aurthor.title }}
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@
             <div class="col-lg-12">
               <div class="text-content">
                 <h4>Article Details</h4>
-                <h2>{{  aurthor.tite }}</h2>
+                <h2>{{  aurthor.title }}</h2>
               </div>
             </div>
           </div>
@@ -39,11 +39,11 @@
                     </div>
                     <div class="down-content">
                       <span>Lifestyle</span>
-                      <a href="post.html"><h4>{{  aurthor.tite }}</h4></a>
+                      <a href="post.html"><h4>{{  aurthor.title }}</h4></a>
                       <ul class="post-info">
                         <li><a href="#">{{ aurthor.author }}</a></li>
                         <li><a href="#">{{ aurthor.category.get }}</a></li>
-                        <li><a href="#">{{ aurthor.updeta }}</a></li>
+                        <li><a href="#">{{ aurthor.update }}</a></li>
                       </ul>
                         <p>{{ aurthor.bode }}</p>
                       <div class="post-options">
