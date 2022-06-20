@@ -8,7 +8,8 @@ from post_app.models import post
 
 def index(request):
     aurthor = post.objects.all()#Manager_request
-    return render(request, "heme_app/index.html", {'aurthor': aurthor})
+    recent_articles = post.objects.all().order_by('-update', '-tima')
+    return render(request, "heme_app/index.html", {'aurthor': aurthor, "recent_articles": recent_articles})
 
 # aurthor = post.published
 # aurthor = post.status
