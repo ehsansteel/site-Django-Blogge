@@ -1,0 +1,60 @@
+{% load static %}
+<header class="">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><h2>Stand Blog<em>.</em></h2></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url "heme:heme" %}">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% static "/about.html" %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "blog:article-list" %}">ALL ARTICLES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% static "post.html" %}">Post Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% static "contact.html" %}">Contact Us</a>
+                    </li>
+                    {# model and views user $ #}
+                    {# user model post file as deta $ #}
+                    <li class="nav-item">
+
+                        {% if request.user.is_authenticated %}
+                            <div>
+                                {% if request.user.firstname %}
+                                    <a class="nav-link" href="#">{{ request.user.first_name }}</a>
+                                {% else %}
+                                    <a class="nav-link" href="#">{{ request.user.username }}</a>
+                                {% endif %}
+                                {% if user.profile.image %}
+                                    <img src="{{ user.profile.image.url }}" alt="profile"
+                                         style="width: 100px;height: 100px;border: 3px solid springgreen;display: inline-block;margin: 2%;background-color: sandybrown">
+                                {% else %}
+                                    <img src="{% static "images/icon/e1.jpg" %}" alt="profile"
+                                         style="width:100px;height:100px; border: 3px solid mediumvioletred;display: inline-block;margin: 2%;">
+                                {% endif %}
+                                <a href="{% url "assets:login" %}" style="color: #0b2e13">
+                                    <spen class="button btn-block">login</spen>
+                                </a>
+                            </div>
+                        {% else %}
+                            <a class="nav-link" href="{% url "assets:login" %}">login</a>
+                            <a class="nav-link" href="{% url "assets:register" %}">register</a>
+                        {% endif %}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

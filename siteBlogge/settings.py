@@ -25,13 +25,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_jalali',
 
     # my_apps
     "heme_app.apps.HemeAppConfig",
     "login_app.apps.LoginAppConfig",
     "post_app.apps.PostAppConfig",
-    "blog_app.apps"
+    "blog_app.apps",
+
+    # page
+    "django_jalali",
+    "django_render_partial"
 ]
 
 MIDDLEWARE = [
@@ -58,6 +61,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'context_proecessores.context_proecessores.recent',
+                'context_proecessores.context_proecessores.categore'
             ],
         },
     },

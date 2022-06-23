@@ -11,6 +11,15 @@ def index(request):
     recent_articles = post.objects.all().order_by('-update', '-tima')
     return render(request, "heme_app/index.html", {'aurthor': aurthor, "recent_articles": recent_articles})
 
+
+
+def sidebar(request):
+    date = {"name": "EhsanFouladi"}
+    return render(request, "includes/sidebar.html", context=date)
+
+
+
+
 # aurthor = post.published
 # aurthor = post.status
 # aurthor = post.costom_manger.filter(status=True)
