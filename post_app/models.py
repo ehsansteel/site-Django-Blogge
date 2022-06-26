@@ -47,9 +47,8 @@ class Manager(models.Manager):
 
 
 class post(models.Model):
-
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.ManyToManyField(categories)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
+    category = models.ManyToManyField(categories, related_name="posts")
     title = models.CharField(max_length=100, unique_for_date="pub_deta")
     bode = models.TextField()
     image = models.ImageField(upload_to="image")

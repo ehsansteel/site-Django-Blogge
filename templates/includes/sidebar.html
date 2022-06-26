@@ -36,7 +36,7 @@
                     <ul>
 
                         {% for cat in categore %}
-                             <li><a href="#">- {{ cat.title }}</a></li>
+                             <li><a href="{% url "blog:category_detail" cat.id %}">- {{ cat.title }}</a></li>
                         {% endfor %}
 
 
