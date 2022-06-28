@@ -34,7 +34,8 @@ INSTALLED_APPS = [
 
     # page
     "django_jalali",
-    "django_render_partial"
+    "django_render_partial",
+    "django_social_share",
 ]
 
 MIDDLEWARE = [
