@@ -9,7 +9,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item {% if request.resolver_match.url_name == "heme" %} active {% endif %} ">
                         <a class="nav-link" href="{% url "heme:heme" %}">Home
                             <span class="sr-only">(current)</span>
                         </a>
@@ -17,7 +17,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% static "/about.html" %}">About Us</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {% if request.resolver_match.url_name == "article-list" %} active {% endif %} ">
                         <a class="nav-link" href="{% url "blog:article-list" %}">ALL ARTICLES</a>
                     </li>
                     <li class="nav-item">
@@ -49,8 +49,8 @@
                                 </a>
                             </div>
                         {% else %}
-                            <a class="nav-link" href="{% url "assets:login" %}">login</a>
-                            <a class="nav-link" href="{% url "assets:register" %}">register</a>
+                            <a class="nav-link {% if request.resolver_match.url_name == "login" %} active {% endif %} " href="{% url "assets:login" %}">login</a>
+                            <a class="nav-link {% if request.resolver_match.url_name == "register" %} active {% endif %}" href="{% url "assets:register" %}">register</a>
                         {% endif %}
                     </li>
                 </ul>

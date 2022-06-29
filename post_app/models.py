@@ -63,7 +63,6 @@ class post(models.Model):
     costom_manger = Manager()
 
 
-
     def save(
         self, force_insert=False, force_update=False,
             using=None, update_fields=None):
@@ -78,6 +77,8 @@ class post(models.Model):
     def __str__(self):
         return f"{self.title}, {self.bode[:20]}"
 
+    class Meta:
+        ordering = ("-tima",)
 
 
 

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from post_app.models import post, categories
-
+from django.core.paginator import Paginator
 
 
 def post_datal(request, slug):
@@ -11,7 +11,10 @@ def post_datal(request, slug):
 
 def post_list(request):
     aurthor = post.objects.all()
-    return render(request, "blog_app/articles_list.html", {"aurthor": aurthor})
+    page_number = request.GET.get("page")
+    paginator = Paginator(aurthor, 2)
+    object_list = paginator.get_page(page_number)
+    return render(request, "blog_app/articles_list.html", {"aurthor": object_list})
 
 
 
