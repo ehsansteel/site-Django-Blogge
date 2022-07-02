@@ -1,10 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-from post_app.models import post, categories
+from post_app.models import post, categories, comment
 from django.core.paginator import Paginator
 
-
+# comment user body
 def post_datal(request, slug):
     aurthor = get_object_or_404(post, slug=slug)
+    if request.method == 'POST':
+        body = request.POST.get("body")
+        parent = request.POST.get("parent_id")
+        comment.objects.create(body=body, parent_id=parent, article=aurthor, user=request.user)
+
     return render(request, "blog_app/post.html", {"aurthor": aurthor})
 
 
