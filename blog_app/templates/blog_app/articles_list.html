@@ -87,20 +87,20 @@
                                     <ul class="page-numbers">
 
                                         {% if aurthor.has_previous %}
-                                            <li><a href="?page={{ aurthor.previous_page_number }}"><i
+                                            <li><a href="?page={{ aurthor.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><i
                                                     class="fa fa-angle-double-left"></i></a></li>
                                         {% endif %}
 
                                         {% for item in aurthor.paginator.page_range %}
                                             {% if aurthor.number == item %}
-                                                <li class="active"><a href="?page={{ item }}">{{ item }}</a></li>
+                                                <li class="active"><a href="?page={{ item }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ item }}</a></li>
                                             {% else %}
-                                                <li><a href="?page={{ item }}">{{ item }}</a></li>
+                                                <li><a href="?page={{ item }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">{{ item }}</a></li>
                                             {% endif %}
                                         {% endfor %}
 
                                         {% if aurthor.has_next %}
-                                            <li><a href="?page={{ aurthor.next_page_number }}"><i
+                                            <li><a href="?page={{ aurthor.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}"><i
                                                     class="fa fa-angle-double-right"></i></a></li>
                                         {% endif %}
                                     </ul>
