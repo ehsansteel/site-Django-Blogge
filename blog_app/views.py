@@ -44,8 +44,8 @@ def contact(request):
     if request.method == "POST":
         form = ContactUsForms(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
-            return redirect("heme:heme")
-
-    form = ContactUsForms
+            print(form.cleaned_data['name'])
+            # return redirect("heme:heme")
+    else:
+        form = ContactUsForms
     return render(request, "blog_app/contact.html", {"form": form})

@@ -24,15 +24,30 @@
                                                 <div class="col-md-6 col-sm-12">
 
                                                     <div class="col-lg-12">
-                                                     {{ form }}
-                                                    <div class="col-lg-12">
-                                                        <fieldset>
-                                                            <button type="submit" id="form-submit" class="main-button">
-                                                                Send Message
-                                                            </button>
-                                                        </fieldset>
+
+                                                        {% if form.non_field_errors %}
+                                                            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+                                                        {% endif %}
+
+                                                        {% if form.name.errors %}
+                                                            <div class="alert alert-danger">{{ form.name.errors }}</div>
+                                                        {% endif %}
+                                                        {{ form.name }}
+                                                        {# app blog froms.py #}
+                                                        {% if form.username.errors %}
+                                                            <div class="alert alert-danger">{{ form.username.errors }}</div>
+                                                        {% endif %}
+                                                        {{ form.username }}
+
+                                                        <div class="col-lg-12">
+                                                            <fieldset>
+                                                                <button type="submit" id="form-submit"
+                                                                        class="main-button">
+                                                                    Send Message
+                                                                </button>
+                                                            </fieldset>
+                                                        </div>
                                                     </div>
-                                                </div>
                                         </form>
                                     </div>
                                 </div>
