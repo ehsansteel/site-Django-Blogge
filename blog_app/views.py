@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from post_app.models import post, categories, comment
+from post_app.models import post, categories, comment, Message_form_user
 from django.core.paginator import Paginator
-from .forms import ContactUsForms
+from .forms import ContactUsForms, MassageForm
 
 # comment user body
 def post_datal(request, slug):
@@ -42,10 +42,16 @@ def search(request):
 # forms.py
 def contact(request):
     if request.method == "POST":
-        form = ContactUsForms(request.POST)
+        form = MassageForm(data=request.POST)
         if form.is_valid():
-            print(form.cleaned_data['name'])
+            form.save(commit=True)
+
             # return redirect("heme:heme")
     else:
-        form = ContactUsForms
+        form = MassageForm
     return render(request, "blog_app/contact.html", {"form": form})
+
+
+
+# instance = form.save(commit=True)
+# instance.bmi = instance.weight * instance.height

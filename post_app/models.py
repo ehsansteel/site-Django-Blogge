@@ -92,6 +92,17 @@ class comment(models.Model):
         return self.body[:50]
 
 
+class Message_form_user(models.Model):
+    name = models.CharField(max_length=100)
+    Text = models.TextField(max_length=100)
+    Email = models.EmailField()
+    Password = models.CharField(max_length=150)
+    Year_time = models.DateTimeField(auto_now_add=True, null=True)
+    age = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
 
 
 # name models in objects user
