@@ -24,13 +24,26 @@ class ContactUsForms(forms.Form):
 
 
 
-
+# form is model data damin *
 
 class MassageForm(forms.ModelForm):
     class Meta:
         model = Message_form_user
         fields = '__all__'
-
+        widgets = {
+            "name": forms.TextInput(attrs={
+                "class": 'form-control',
+                "placeholder": 'type is name'
+            }),
+            "Text": forms.Textarea(attrs={
+                "class": 'form-control',
+                "placeholder": 'Comment'
+            }),
+            "Email": forms.EmailInput(attrs={
+                "class": 'form-control',
+                "placeholder": 'type is email'
+            }),
+        }
 
 
 

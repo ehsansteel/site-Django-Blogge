@@ -1,19 +1,21 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from .forms import LoginForms, UserEditForms
 
 def login_user(request):
     if request.user.is_authenticated == True:
         return redirect("heme:heme")
 
     if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        login_user = authenticate(request, username=username, password=password)
-        if login_user is not None:
-            login(request, login_user)
-            return redirect("heme:heme")
-    return render(request, "login_app/logo.html", {})
+        form = LoginForms(request.POST)
+        if form.is_valid():
+            user = User.objects.get(username=form.cleaned_data.get("username"))
+            login(request, user)
+            return redirect('heme:heme')
+    else:
+        form = LoginForms()
+    return render(request, "login_app/logo.html", {"form": form})
 
 
 def regester(request):
@@ -34,6 +36,16 @@ def regester(request):
         login(request, user)
         return redirect('heme:heme')
     return render(request, "login_app/redjster.html", {})
+
+
+def profile_Edit(request):
+    user = request.user
+    form = UserEditForms(instance=user)
+    if request.method == "POST":
+        form = UserEditForms(instance=user, data=request.POST)
+        if form.is_valid():
+            form.save()
+    return render(request, "login_app/Edit_user.html", {"form": form})
 
 
 def logout_user(request):
